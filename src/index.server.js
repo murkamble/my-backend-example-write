@@ -18,12 +18,14 @@ mongoose.connect(
 
 // routes
 const authRoutes = require('./routes/auth');
+const authAdminRoutes = require('./routes/admin/auth');
 
 
 
 
 // API
 app.use('/api', authRoutes);
+app.use('/api', authAdminRoutes);
 
 
 

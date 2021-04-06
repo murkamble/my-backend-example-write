@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ["user", "admin"],
-        default: "admin",
+        default: "user",
     },
     contactNumber: { type: String },
     pofilePicture: { type: String },
