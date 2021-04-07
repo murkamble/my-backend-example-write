@@ -1,11 +1,12 @@
 const express = require('express');
 const env = require('dotenv');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const app = express();
 env.config();
-app.use(bodyParser());
+//app.use(bodyParser());
+app.use(express.json());
 mongoose.connect(
     'mongodb://localhost:27017/inbaazaar', {
         useNewUrlParser: true,
@@ -13,7 +14,7 @@ mongoose.connect(
         useCreateIndex: true
     }
 ).then(() => {
-    console.log('Databases Connected.....');
+    console.log('Databases Connected......');
 });
 
 // routes
