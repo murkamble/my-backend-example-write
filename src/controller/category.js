@@ -15,3 +15,11 @@ exports.addCategory = (req, res) => {
         if (Category) return res.status(201).json({ category });
     })
 }
+
+exports.getCategories = (req, res) => {
+    Category.find({})
+    .exec((error, categories) => {
+        if (error) return res.status(400).json({ error });
+        if (categories) return res.status(201).json({ categories });
+    })
+}
