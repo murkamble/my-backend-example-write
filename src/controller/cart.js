@@ -15,7 +15,7 @@ exports.addItemToCart = (req, res) => {
                 if (item) {
                     Cart.findOneAndUpdate({ "user": req.user._id, "cartItems.product": product }, {
                             "$set": {
-                                "cartItems": {
+                                "cartItems.$": {
                                     ...req.body.cartItems,
                                     quantity: item.quantity + req.body.cartItems.quantity
                                 }
@@ -45,6 +45,7 @@ exports.addItemToCart = (req, res) => {
 
             } else {
                 // if cart not exists then create a new cart
+
                 const cart = new Cart({
                     user: req.user._id,
                     cartItems: req.body.cartItems
@@ -56,6 +57,7 @@ exports.addItemToCart = (req, res) => {
                         return res.status(201).json({ cart });
                     }
                 })
+
             }
         })
 }
